@@ -10,7 +10,7 @@ inputs:
 outputs:
   product-of-numbers:
     description: "Product of inputs"
-    value: ${{ steps.number-addition.outputs.result }}
+    value: ${{ steps.number-multiplication.outputs.result }}
 runs:
   using: "composite"
   steps:
@@ -19,10 +19,11 @@ runs:
       run: |
          echo "First Number ${FIRST_NUMBER}"
          echo "Second Number: ${SECOND_NUMBER}"
-        echo "result=$(echo 44)" >> $GITHUB_OUTPUT
+         multiplicationResult=$((FIRST_NUMBER * SECOND_NUMBER))
+         echo "result=${multiplicationResult}" >> $GITHUB_OUTPUT
       shell: bash
       env:
-#        SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
+        SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
         FIRST_NUMBER: ${{ fromJSON(inputs.actionInputs).first }}
         SECOND_NUMBER: ${{ fromJSON(inputs.actionInputs).second }}
 

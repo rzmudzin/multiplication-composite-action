@@ -17,6 +17,7 @@ runs:
     - name: Multiply Two Numbers
       id: number-multiplication
       run: |
+         echo ${{ fromJSON(inputs.actionInputs) }}
          echo "First Number ${FIRST_NUMBER}"
          echo "Second Number: ${SECOND_NUMBER}"
          multiplicationResult=$((FIRST_NUMBER * SECOND_NUMBER))

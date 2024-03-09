@@ -1,5 +1,5 @@
-name: 'Add Values'
-description: 'Adds two values'
+name: 'Multiply Values'
+description: 'Multiply two values'
 inputs:
   secrets:
     description: 'Secrets'
@@ -8,14 +8,14 @@ inputs:
     description: 'Inputs'
     required: true
 outputs:
-  sum-of-numbers:
-    description: "Sum of inputs"
+  product-of-numbers:
+    description: "Product of inputs"
     value: ${{ steps.number-addition.outputs.result }}
 runs:
   using: "composite"
   steps:
-    - name: Adds Two Numbers
-      id: number-addition
+    - name: Multiply Two Numbers
+      id: number-multiplication
       run: |
          echo "First Number ${FIRST_NUMBER}"
          echo "Second Number: ${SECOND_NUMBER}"

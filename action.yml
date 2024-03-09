@@ -25,8 +25,8 @@ runs:
       shell: bash
       env:
         SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
-        FIRST_NUMBER: ${{ fromJSON(inputs.actionInputs).first }}
-        SECOND_NUMBER: ${{ fromJSON(inputs.actionInputs).second }}
+        FIRST_NUMBER: ${{ fromJSON(inputs.actionInputs).add-action-first-value }}
+        SECOND_NUMBER: ${{ fromJSON(inputs.actionInputs).add-action-second-value }}
 
 
 

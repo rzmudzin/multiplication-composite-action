@@ -1,0 +1,44 @@
+name: 'Add Values'
+description: 'Adds two values'
+inputs:
+  secrets:
+    description: 'Secrets'
+    required: true
+  actionInputs:
+    description: 'Inputs'
+    required: true
+outputs:
+  sum-of-numbers:
+    description: "Sum of inputs"
+    value: ${{ steps.number-addition.outputs.result }}
+runs:
+  using: "composite"
+  steps:
+    - name: Adds Two Numbers
+      id: number-addition
+      run: |
+         echo "First Number ${FIRST_NUMBER}"
+         echo "Second Number: ${SECOND_NUMBER}"
+        echo "result=$(echo 44)" >> $GITHUB_OUTPUT
+      shell: bash
+      env:
+#        SECRET1: ${{ fromJSON(inputs.secrets).SECRET1 }}
+        FIRST_NUMBER: ${{ fromJSON(inputs.actionInputs).first }}
+        SECOND_NUMBER: ${{ fromJSON(inputs.actionInputs).second }}
+
+#    - name: Random Number Generator
+#      id: random-number-generator
+#      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+#      shell: bash
+#
+#    - name: Set GitHub Path
+#      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+#      shell: bash
+#      env:
+#        GITHUB_ACTION_PATH: ${{ github.action_path }}
+#
+#    - name: Run goodbye.sh
+#      run: goodbye.sh
+#      shell: bash
+
+
